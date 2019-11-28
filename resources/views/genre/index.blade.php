@@ -30,9 +30,7 @@
                     <b id="listHeader"> TODOS LOS GÉNEROS </b>
                     <ul>
                         @foreach ($genres as $genre)
-                            @if (count($genre->movies) > 0)
-                                <li><a id="listElement" href="#{{$genre->description}}">{{$genre->description}}</a></li>
-                            @endif  
+                            <li><a id="listElement" href="#{{$genre->description}}">{{$genre->description}}</a></li>
                         @endforeach
                     </ul>
                 </ul>

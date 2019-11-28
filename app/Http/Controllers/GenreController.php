@@ -56,30 +56,25 @@ class GenreController extends Controller
      * @return View
      */
     public function create(){
-        //return view("user.create");
+        return view("genre.create");
     }
 
     // STORE FUNCTION ///////////////////////////////////////////////////////////////////////
     /**
-     * Method that recieves information in a Request object,
+     * Method that recieves information in a Request object from the,
      * and then checks and include that information inside our database
      * 
      * @param r
      * @return View
      */
     public function store(Request $r){
-        /*$user = new User($r->all());
-        $user->id = User::max('id')+1;
+        $genre = new Genre($r->all());
+        $genre->details = $r->details;
+        $genre->id = Genre::max('id')+1;
 
-        if($r->type == "true"){
-            $user->type = 0;
-        } else {
-            $user->type = 1;
-        }
-        $user->save();
-        //No se como volver al index()
-        //return view("user/index");
-        return redirect(route("user.index"));*/
+        $genre->save();
+
+        return redirect(route("genre.index"));
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -90,8 +85,8 @@ class GenreController extends Controller
      * @return View
      */
     public function edit($id){
-        /*$data['user'] = User::find($id);
-        return view("user.edit", $data);*/
+        $data['genre'] = Genre::find($id);
+        return view("genre.edit", $data);
     }
 
     // UPDATE FUNCTION //////////////////////////////////////////////////////////////////////////////
@@ -103,19 +98,12 @@ class GenreController extends Controller
      * @return View
      */
     public function update(Request $r){
-        /*$user = User::find($r->id);
-
-        var_dump($r->id);
-        $user->fill($r->all());
+        $genre = Genre::find($r->id);
+        $genre->fill($r->all());
         
-        if($r->type == "true"){
-            $user->type = 0;
-        } else {
-            $user->type = 1;
-        }
-
-        $user->update();
-        return redirect(route("user.index"));*/
+        $genre->update();
+        
+        return redirect(route("genre.index"));
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -128,8 +116,8 @@ class GenreController extends Controller
      * @return View
      */
     public function destroy($id){
-        /*$user = User::find($id);
-        $user->delete();
-        return redirect(route("user.index"));*/
+        $genre = Genre::find($id);
+        $genre->delete();
+        return redirect(route("genre.index"));
     }
 }

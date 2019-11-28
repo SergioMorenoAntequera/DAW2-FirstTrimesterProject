@@ -1,32 +1,50 @@
 @extends('../layouts/master')
 
-@section('title', 'Modificar usuario')
-
-@section('innerTitle')
-    Modificando usuario: {{$user->nick}}
-@endsection
+@section('title', 'Modificar Genero')
 
 @section('sidebar')
-    <p>En este menu podemos ver un formulario para modificar un usuario</p>
+    <p>Modificando género: {{$genre->description}}</p>
 @endsection
 
 @section('content')
 
-    <form method="POST" action="{{route('user.update', $user->id)}}">
-        @csrf
-        @method("PATCH")
+<div class="card text-center">
+        <div class="card-header border border-success">
+            Modificar género existente
+        </div>
+        
+        <div class="card-body">
+            <form method="POST" action="{{route('genre.update', $genre->id)}}">
+                @csrf
+                @method("PATCH")
 
-        <input type="text" name="nick" placeholder="Nick" value="{{$user->nick}}"><br>
-        <input type="email" name="email" placeholder="Email" value="{{$user->email}}"><br>
-        <input type="password" name="password" placeholder="Password" value="{{$user->password}}"><br>
-        @if ($user->type == 0)
-            <input type="checkbox" name="type" value="true" checked=> is admin? <br><br> 
-        @else
-            <input type="checkbox" name="type" value="true"> is admin? <br><br>
-        @endif
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">
+                        Nombre / Descripción
+                    </label>
+                    <div class="col-md-6">
+                        <input name="description" id="name" type="text" class="form-control" value="{{$genre->description}}" required autofocus>
+                    </div>
+                </div>
 
-        <button type="submit">Modify User</button>
-    </form>
-    <!-- <a href="{{route('user.index')}}"> <Button> Retroceder </Button> </a> --> 
+                <div class="form-group row">
+                    <label for="details" class="col-md-4 col-form-label text-md-right">
+                        Detalles
+                    </label>
+                    <div class="col-md-6">
+                        <textarea name="details" id="details" type="text" class="form-control" rows="6" required autofocus>{{$genre->details}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-0">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success">
+                            Modificar género
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 @endsection

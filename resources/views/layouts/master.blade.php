@@ -47,7 +47,7 @@
                 @endauth
                 @guest
                     <li style="position: absolute; top: 15px; right: 10px" class="nav-item">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="GET" action="{{ route('login') }}">
                             @csrf
                             <a class="nav-link"> 
                             <button type="submit" class="btn btn-success">

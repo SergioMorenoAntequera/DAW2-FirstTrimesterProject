@@ -17,12 +17,21 @@ class UsersTableSeeder extends Seeder
             DB::table('users')->insert([    
                 //La id no se pone porque se autoincrementa sola
                 'nick' => 'user'.$i,
-                'email' => ' user'.$i.'@email.com',
+                'email' => 'user'.$i.'@email.com',
                 'password' => Hash::make('mysupersecretpassword'),
                 'type' => 0,
                 'created_at' => date('Y-m-d H-m-s'), 
                 'updated_at' => date('Y-m-d H-m-s'),
             ]);
         }
+        DB::table('users')->insert([    
+            //La id no se pone porque se autoincrementa sola
+            'nick' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('admin'),
+            'type' => 0,
+            'created_at' => date('Y-m-d H-m-s'), 
+            'updated_at' => date('Y-m-d H-m-s'),
+        ]);
     }
 }

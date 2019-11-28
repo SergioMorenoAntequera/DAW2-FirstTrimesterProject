@@ -13,6 +13,6 @@ class Genre extends Model
 
     //The attributes that are mass assignable.
     protected $fillable = [
-        'description',
+        'description', 'details',
     ];
 }
