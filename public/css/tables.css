@@ -1,0 +1,36 @@
+/********************* TABLE *********************/
+#mainTable {
+    border-collapse: collapse;
+    margin-left:auto;
+    margin-right:auto;
+    width: 65%;
+}
+
+#mainTable td, #mainTable th {
+    border: 1px solid white;
+    padding: 8px;
+    width: 15%;
+}
+  
+#mainTable tr:nth-child(uneven){
+    background-color: #f2f2f2;
+}
+  
+#mainTable tr:hover {
+    background-color: #ddd;
+}
+
+#mainTable th {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    
+}
+
+#mainTable td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
