@@ -146,4 +146,12 @@ class MovieController extends Controller
         $movie->delete();
         return redirect(route("movie.index"));
     }
+
+    public function lookForYear($year){
+        $data['year'] = $year;
+        $data['movies'] = Movie::all();
+
+        return view("movie.year", $data);
+    }
+    
 }

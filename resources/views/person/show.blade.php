@@ -12,37 +12,42 @@
 
 @section('content')
     <div style="float:left; margin-right: 15px">
-        <img src="/img/people/{{$person->photo}}" width="320px" height="480px">
-        <br><br>
+        <img src="/img/people/{{$person->photo}}" height="410px">
     </div>
 
     <div class="text-left">
-
-
-
-        <div>
-            <p><b>Dirección: </b><br>
-            @foreach ($person->moviesDirected as $movie)
-                    
-                <a href="{{route('movie.show', $movie->id)}}">
-                    <img src="/img/covers/{{$movie->cover}}" alt="Cover" height="200" width="120">
-                </a>
-            @endforeach
-            </p>
-        </div>
-
-        <div>
-            <p><b>Filmografía: </b><br>
-            @foreach ($person->moviesActed as $movie)
-                <a href="{{route('movie.show', $movie->id)}}">
-                    <img src="/img/covers/{{$movie->cover}}" alt="Cover" height="175" width="100">
-                </a>
-            @endforeach
-            </p>
-        </div>
         
-        <a href="{{$person->external_url}}"><b>Más información</b></a>
+            <h4><b>Ficha de la persona</b></h4>
+            <b>Nombre:</b><br>
+            {{$person->name}}
+
+            <br><br>
+
+            <b>Dirección:</b><br>
+            @foreach ($person->moviesDirected as $movie)
+                <figure class="figure">
+                    <a href="{{route('movie.show', $movie->id)}}">
+                        <img style="height: 250px" src="/img/covers/{{$movie->cover}}"class="figure-img img-fluid rounded" alt="Nombre del Actor">
+                        <figcaption class="figure-caption">{{$movie->title}}</figcaption>
+                    </a>
+                </figure>
+            @endforeach
+            
+            <br>
+                
+            <b>Filmografía:</b><br>
+            @foreach ($person->moviesActed as $movie)
+                <figure class="figure">
+                    <a href="{{route('movie.show', $movie->id)}}">
+                        <img style="height: 250px;" src="/img/covers/{{$movie->cover}}"class="figure-img img-fluid rounded" alt="Nombre del Actor">
+                        <figcaption class="figure-caption">{{$movie->title}}</figcaption>
+                    </a>
+                </figure>
+            @endforeach
+
         <br>
+        <a href="{{$person->external_url}}"><b>Más información</b></a>
+        <br><br>
     </div>
     
 @endsection

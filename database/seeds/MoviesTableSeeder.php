@@ -14,7 +14,7 @@ class MoviesTableSeeder extends Seeder
         // INTRODUCCION DE DATOS ///////////////////////////////////////////////////////////////////////////
         $titles = Array("El Este del Edén", "El niño con el pijama de rayas","La lista de Schindler", 
                 "Un burka por amor", "Shrek", "Shrek 2", "Shrek 3", "Shrek felices para siempre");
-        $years = Array(1955, 2008, 1993, 2009, 2001, 2004, 2007, 2010);
+        $years = Array(1955, 2008, 1993, 2008, 2001, 2004, 2007, 2010);
         $durations = Array(115, 94, 195, 73, 87, 93, 92, 93);
         $ratings = Array(7, 6.9, 8, 5.1, 7, 7.3, 5.9, 5.9);
         $covers = Array("ElEsteDelEden.png", "NinoRayas.png", "LalistadeSchindler.png", "BurkaAmor.png",
