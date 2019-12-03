@@ -14,7 +14,11 @@
 
         <div style="float:left; margin-right: 15px; text-align: left">
             
-            <img style="margin-left: 0px" src="/img/covers/{{$movie->cover}}" width="355px" height="460px">
+            @if (strpos($movie->cover, "filmaffinity"))
+                <img style="margin-left: 0px" src="{{$movie->cover}}" width="355px" height="460px">
+            @else
+                <img style="margin-left: 0px" src="/img/covers/{{$movie->cover}}" width="355px" height="460px">
+            @endif
             <br>
         </div>
 
@@ -27,6 +31,15 @@
 
                 <!-- LEFT -->
                 <div style="float:left; width: 28%; height: ‭432‬px;"> 
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="form-group">
                         <label>Título</label>
                         <input style="width: 100%" type="text" class="form-control" name="title" placeholder="Título" value="{{$movie->title}}" required>

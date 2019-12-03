@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/css/tables.css') }}"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="/js/jquery-3.4.1.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
   </head>
   <body class="bg-light">
     
@@ -22,17 +22,41 @@
             Hollywood 2
             </strong></a>
           
+            <!-- Botones de navegación de la barra -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                <a class="nav-link" href="{{route('movie.index')}}"> Peliculas </a>
+                    @if (!strpos(Request::url(), "/movie"))
+                        <a class="nav-link" href="{{route('movie.index')}}"> Peliculas </a>
+                    @else
+                        <b><a style="color: white" class="nav-link" href="{{route('movie.index')}}"> Peliculas </a></b> 
+                    @endif
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{{route('person.index')}}"> Personas </a>
+                    @if (!strpos(Request::url(), "/person"))
+                        <a class="nav-link" href="{{route('person.index')}}"> Personas </a>
+                    @else
+                        <b><a style="color: white" class="nav-link" href="{{route('person.index')}}"> Personas </a></b> 
+                    @endif
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{{route('genre.index')}}"> Generos </a>
+                    @if (!strpos(Request::url(), "/genre"))
+                    <a class="nav-link" href="{{route('genre.index')}}"> Generos </a>
+                    @else
+                        <b><a style="color: white" class="nav-link" href="{{route('genre.index')}}"> Géneros </a></b> 
+                    @endif
                 </li>
+                @auth
+                    <li class="nav-item">
+                        @if (!strpos(Request::url(), "/user"))
+                            <a class="nav-link" href="{{route('user.index')}}"> Usuarios </a>
+                        @else
+                            <b><a style="color: white" class="nav-link" href="{{route('user.index')}}"> Usuarios </a></b> 
+                        @endif
+                    </li>
+                @endauth
+
+                <!-- Los botones de logue o salir de la sesion -->
                 @auth
                     <li style="position: absolute; top: 15px; right: 10px" class="nav-item">
                         <form method="POST" action="{{ route('logout') }}">
@@ -51,7 +75,7 @@
                             @csrf
                             <a class="nav-link"> 
                             <button type="submit" class="btn btn-success">
-                                Log In
+                                Iniciar Sesión
                             </button>
                             </a>
                         </form>
@@ -83,9 +107,11 @@
     </div>
     <!-- fin del resto de página -->
 
-    <div style="height: 90px;">
+    <!-- Inicio del footer -->
+    <div style="z-index: -10; position: relative; bottom: 90px; height: 90px;">
         
     </div>
+    <!-- Fin del footer -->
 
 
     <!-- Optional JavaScript -->

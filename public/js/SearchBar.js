@@ -1,17 +1,14 @@
 
+$('#search').keyup(function(r){
+    var text = $('#search').val();
+    var elements = $('.element');
 
-var search = document.getElementById("search"),
-element = document.getElementsByTagName("span"),
-forEach = Array.prototype.forEach;
-
-search.addEventListener("keyup", function(e){
-    var choice = search.value;
-    forEach.call(element, function(f){
-        elementName = f.innerHTML;
-        if (elementName.toLowerCase().search(choice.toLowerCase()) == -1){
-            f.parentNode.parentNode.style.display = "none";   
+    elements.each(function(index){
+        var name = $(this).find(".nameSearch").text();
+        if(name.toLowerCase().includes(text.toLowerCase())) {
+            $(this).show();
         } else {
-            f.parentNode.parentNode.style.display = "block";
+            $(this).hide();
         }
     });
-}, false);
+});

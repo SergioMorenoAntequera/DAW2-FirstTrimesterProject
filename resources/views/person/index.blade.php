@@ -64,9 +64,9 @@
             
             @foreach ($people as $person)
                 <!-- Principio del div de cada persona -->
-                <div style="float:left; width:25%; margin-top: 10px;">
+                <div class="element" style="float:left; width:25%; margin-top: 10px;">
                     <!-- Nombre de la persona -->
-                    <b><span>{{$person->name}}</span><b>
+                    <b><span class="nameSearch">{{$person->name}}</span><b>
 
                     <!-- Foto de la persona -->
                     <a href='{{route('person.show', $person->id)}}'> 

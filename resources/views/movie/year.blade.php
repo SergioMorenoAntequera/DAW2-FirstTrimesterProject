@@ -11,7 +11,11 @@
         @if ($movie->year == $year)
             <figure class="figure">
                 <a href="{{route('movie.show', $movie->id)}}">
-                    <img style="height: 250px;" src="/img/covers/{{$movie->cover}}"class="figure-img img-fluid rounded" alt="Película">
+                    @if (strpos($movie->cover, "filmaffinity"))
+                        <img style="margin-top: 10px;" src="{{$movie->cover}}" width="285px" height="400">
+                    @else
+                        <img style="margin-top: 10px;" src="/img/covers/{{$movie->cover}}" width="285px" height="400">
+                    @endif
                     <figcaption class="figure-caption">{{$movie->title}}</figcaption>
                 </a>
             </figure>

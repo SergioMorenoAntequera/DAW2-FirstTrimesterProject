@@ -38,7 +38,6 @@
 
             <div class="col-8">
                 @foreach ($genres as $genre)
-                    
                     <div style="margin-top: 5px; width: 100%" class="card">
                         <div class="card-head text-success">
                             <a style="color: green" href="{{route('genre.show', $genre->id)}}">

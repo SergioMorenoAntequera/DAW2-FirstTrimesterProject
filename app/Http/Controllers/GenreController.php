@@ -117,6 +117,7 @@ class GenreController extends Controller
      */
     public function destroy($id){
         $genre = Genre::find($id);
+        $genre->movies()->detach();
         $genre->delete();
         return redirect(route("genre.index"));
     }

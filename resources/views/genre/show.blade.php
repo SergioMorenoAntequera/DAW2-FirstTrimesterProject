@@ -10,9 +10,16 @@
     @foreach ($movies as $movie)
         @foreach ($movie->genres as $movieGenre)
             @if ($movieGenre->description == $genre->description)
-                <a href="{{route('movie.show', $movie->id)}}">
-                    <img src="/img/covers/{{$movie->cover}}" width="200px" height="300px">
-                </a>
+            <figure style="width: 24%" class="figure">
+                    <a href="{{route('movie.show', $movie->id)}}">
+                        @if (strpos($movie->cover, "filmaffinity"))
+                            <img style="margin-top: 10px;" src="{{$movie->cover}}" width="95%" height="400">
+                        @else
+                            <img style="margin-top: 10px;" src="/img/covers/{{$movie->cover}}" width="95%" height="400">
+                        @endif
+                        <figcaption class="figure-caption">{{$movie->title}}</figcaption>
+                    </a>
+                </figure>
             @endif
         @endforeach
     @endforeach

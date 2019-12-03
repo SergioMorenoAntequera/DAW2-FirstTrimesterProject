@@ -15,7 +15,6 @@
 <div style="float:left; margin-right: 15px; text-align: left">
         
     <img style="margin-left: 0px" src="/img/covers/NoCover.png" width="355px" height="460px">
-    <br>
 </div>
 
 <div class="text-left"> 
@@ -24,6 +23,15 @@
         @csrf
         <!-- LEFT -->
         <div style="float:left; width: 28%; height: ‭432‬px;"> 
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="form-group">
                 <label>Título</label>
                 <input style="width: 100%" type="text" class="form-control" name="title" placeholder="Título" required>
@@ -50,7 +58,7 @@
             </div>
             <div class="form-group">
                 <label>URL Externa</label>
-                <input style="width: 100%" type="text" class="form-control" name="external_url" placeholder="URL externa" required>
+                <input style="width: 100%" type="text" class="form-control" name="external_url" placeholder="URL externa" value="{{Request::old('external_url')}}">
             </div>
             <div class="form-group">
                 <label>Portada</label>

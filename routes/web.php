@@ -12,15 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route("movie.index"));
 });
 
 // USER /////////////////////////////////////////////////////////////////////////////////////
 Route::resource('user', 'UserController');
 
 // MOVIE /////////////////////////////////////////////////////////////////////////////////////
-Route::resource('movie','MovieController');
 Route::get('movie/year/{year}', 'MovieController@lookForYear')->name('movie.year');
+Route::get('movie/scan', 'MovieController@scan')->name('movie.scan');
+Route::resource('movie','MovieController');
 
 
 // PERSON /////////////////////////////////////////////////////////////////////////////////////

@@ -98,10 +98,10 @@ class UserController extends Controller
      * @param r
      * @return View
      */
-    public function update(Request $r){
-        $user = User::find($r->id);
+    public function update(Request $r, $id){
 
-        var_dump($r->id);
+        $user = User::find($id);
+
         $user->fill($r->all());
         
         if($r->type == "true"){

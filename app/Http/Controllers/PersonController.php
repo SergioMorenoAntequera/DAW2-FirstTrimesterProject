@@ -18,7 +18,7 @@ class PersonController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'show');    
+        $this->middleware('auth')->except('show');    
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +30,7 @@ class PersonController extends Controller
      */
     public function index(){
         $data['people'] = Person::all();
-        return view("person/index", $data);
+        return view("person.index", $data);
     }
 
     // SHOW A PERSON /////////////////////////////////////////////////////////////////////////
@@ -44,7 +44,7 @@ class PersonController extends Controller
     public function show($id){
         //Cogemos todos los datos de la BD y los metemos
         $data['person'] = Person::find($id);
-        return view("person/show", $data);
+        return view("person.show", $data);
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -108,6 +108,7 @@ class PersonController extends Controller
      * @return View
      */
     public function update(Request $r){
+        dd($r->id);
         $person = Person::find($r->id);
         $person->fill($r->all());
 
@@ -135,6 +136,10 @@ class PersonController extends Controller
      */
     public function destroy($id){
         $person = Person::find($id);
+        
+        $person->moviesActed()->detach();
+        $person->moviesDirected()->detach();
+        
         $person->delete();
         return redirect(route("person.index"));
     }
