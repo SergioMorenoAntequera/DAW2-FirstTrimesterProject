@@ -66,6 +66,7 @@ class UserController extends Controller
     public function store(Request $r){
         $user = new User($r->all());
         $user->id = User::max('id')+1;
+        $user->password = Hash::make($r->password);
 
         if($r->type == "true"){
             $user->type = 0;

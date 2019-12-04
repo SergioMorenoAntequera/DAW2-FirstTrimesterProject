@@ -12,6 +12,7 @@
 
 @section('content')
 
+    <!-- Boton flotante para crear una pelicula nueva -->
     @auth
     <a href="{{route("movie.create")}}" style="position: fixed;
             top: 100px;
@@ -19,6 +20,7 @@
             <img src="img/icons/plus.png" height="50" width="50">
     </a>
 
+    <!-- Boton flotante para realizar el Directory Scan y el web scraping -->
     <a href="{{route("movie.scan")}}" style="position: fixed;
             top: 100px;
             left: 35px; ">
@@ -26,13 +28,16 @@
     </a>
     @endauth
 
+    <!-- Bara para bustar por nombre de las películas -->
     <input style="width: 50%" id='search' type='text' placeholder='Buscar por nombres..'> 
     <br><br>
     <script type="text/javascript" src="js/SearchBar.js"></script>
 
+    <!-- Display de todas las peliculas -->
     <div class="row">
         <div class="col-12">
             @foreach ($movies as $movie)
+                <!-- Configuración visual de cada una de las películas -->
                 <div class="element" style="position: relative; float:left; width:25%; height: 560px;">
                     <!-- Añadimos la imagen y el título -->
                     <a href='{{route('movie.show', $movie->id)}}'> 
@@ -43,12 +48,14 @@
                         @endif
                     </a>
                     <br>
+                    <!-- Titulo de la película, valoración  y minutos -->
                     <b class="nameSearch" style="font-size: 18px">{{$movie->title}}</b>
                     <br>
                     <b style="color: #c18e0c">{{$movie->rating}}/10⭐</b>
                     <b style="color: #4d4d4d">{{$movie->duration}} min🕒</b>
                     <br>
                     
+                    <!-- Botones para modificar y borrar la película -->
                     @auth
                         <a href="{{route('movie.edit', $movie->id)}}"> 
                             <Button style="position:absolute; left: 40px; bottom:50; margin-top: 5px"> 
@@ -59,13 +66,12 @@
                         <form method="POST" action="{{route('movie.destroy', $movie->id)}}">
                             @csrf
                             @method("DELETE")
-                            <BUTTON class="btn-delete" style="position:absolute; right: 40px; bottom:50; margin-top: 5px;" type="submit" >Eliminar</Button> 
+                            
+                            <input class="btn-delete" style="position:absolute; right: 40px; bottom:50; margin-top: 5px;" type="submit" value="Eliminar"> 
                         </form>
                     @endauth
                 </div>
             @endforeach
-            
         </div>
     </div>
-    <script src="js/DeleteButton.js"></script>
 @endsection

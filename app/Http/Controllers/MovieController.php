@@ -158,20 +158,13 @@ class MovieController extends Controller
      * @param id
      * @return View
      */
-    public function destroy($request, $id){
+    public function destroy($id){
+        $movie = Movie::find($id);
         
-        if($request->ajax()){
-            $movie = \App\Movie::find($id);
-            $movie->genres()->detach();
-            $movie->actors()->detach();
-            $movie->directors()->detach();
-            $movie->delete();
-        }
+        $movie->delete();
 
-        /*$movie = Movie::find($id);
-        
         return redirect(route("movie.index"));
-        */
+        
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -229,9 +222,11 @@ class MovieController extends Controller
             }
         }
         
+        //Por cada titulo de pelicula lanzamos un scrapping
         foreach($titles as $fileTitle){
+            //Este método nos devuelde un array con toda la información necesaria de una película
             $data = Movie::scraping($fileTitle);
-            $data['filename'] = $fileTitle;
+            $data['filename'] = $fileTitle.".mp4";
             $putIn = true;
 
             foreach($movies as $movie){

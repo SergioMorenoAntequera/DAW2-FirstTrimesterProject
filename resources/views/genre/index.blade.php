@@ -38,21 +38,25 @@
 
             <div class="col-8">
                 @foreach ($genres as $genre)
+                    <!-- Cada uno de los div que representarán un género -->
                     <div style="margin-top: 5px; width: 100%" class="card">
                         <div class="card-head text-success">
                             <a style="color: green" href="{{route('genre.show', $genre->id)}}">
                                 <h3 id="{{$genre->description}}" style="margin-left: 20px; margin-top: 20px;" style="border-left: 5px;">{{$genre->description}}</h3>
                             </a>
                         </div>
+
                         <div style="padding-top: 10px" class="card-body">
+                            <!-- Detalles de cada película -->
                             {{$genre->details}}<br>
-                            
                             @auth
                                 <div style="margin-top:5px;  width: 250px">
+                                    <!-- Boton para modificar -->
                                     <a href="{{route('genre.edit', $genre->id)}}"> 
                                         <Button style="float:left; width: 100px; margin-top: 5px"> Modificar </Button> 
                                     </a> 
                                     
+                                    <!-- Boton para borrar -->
                                     <form method="POST" action="{{route('genre.destroy', $genre->id)}}">
                                         @csrf
                                         @method("DELETE")

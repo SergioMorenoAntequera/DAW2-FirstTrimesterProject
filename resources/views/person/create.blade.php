@@ -13,11 +13,12 @@
 @section('content')
 
 <div style="float:left; margin-right: 15px; text-align: left">
-        
+    <!-- Imagen vacía para la vista -->
     <img style="margin-left: 0px" src="/img/people/NoPhoto.png" width="355px" height="460px">
     <br>
 </div>
 
+<!-- Panel de la derecha donde irán los cambios -->
 <div class="text-left"> 
     <h4><b>Creación de persona</b></h4>
     <form style="display: inline" method="POST" action="{{route('person.store')}}" enctype="multipart/form-data">

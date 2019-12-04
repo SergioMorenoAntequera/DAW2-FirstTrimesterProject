@@ -15,6 +15,7 @@
         <div class="card-body">
             <form method="POST" action="{{ route('genre.store') }}">
                 @csrf
+                <!-- Nombre -->
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">
                         Nombre / Descripción
@@ -24,6 +25,7 @@
                     </div>
                 </div>
 
+                <!-- Detalles -->
                 <div class="form-group row">
                     <label for="details" class="col-md-4 col-form-label text-md-right">
                         Detalles
@@ -33,6 +35,7 @@
                     </div>
                 </div>
 
+                <!-- Boton para registrar -->
                 <div class="form-group row mb-0">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-success">

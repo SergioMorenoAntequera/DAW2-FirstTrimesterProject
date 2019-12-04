@@ -94,7 +94,8 @@ class PersonController extends Controller
      * @return View
      */
     public function edit($id){
-        $data['person'] = person::find($id);
+        $data['person'] = Person::find($id);
+
         $data['movies'] = Movie::all();
         return view("person.edit", $data);
     }

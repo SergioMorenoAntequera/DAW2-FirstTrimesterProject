@@ -8,16 +8,24 @@ use Illuminate\Support\Facades\DB;
 
 class Movie extends Model
 {
-    
+    /**
+     * With this we casn get all the genres of the movie
+     */
     public function genres() {
         return $this->belongsToMany('App\Genre');
     }
 
+    /**
+     * With this we casn get all the actors of the movie
+     */
     public function actors() {
         return $this->belongsToMany('App\Person', 'people_act_movies',
         'movie_id', 'person_id');
     }
 
+    /**
+     * With this we casn get all the directors of the movie
+     */
     public function directors() {
         return $this->belongsToMany('App\Person', 'people_direct_movies',
         'movie_id', 'person_id');
@@ -40,6 +48,7 @@ class Movie extends Model
      */
     public static function scraping($name){
         //Miramos el nombre para ver cambiar los espacios por "+"
+        //que es como le gusta a google
         $urlGoogle = "https://www.google.es/search?q=".str_replace(" ", "+", $name)."+Filmaffinity";
 
         //Hacemos scrapping de la página con el url que hemos obtenido
@@ -62,11 +71,11 @@ class Movie extends Model
                     if(strpos($link, "filmaffinity.com")){
                         $goodLink = $link;
                         break;
-                    }
+                    } 
                 }
             }
         }
-
+        
         //Aqui ya tenemos la página
         //ahora tenemos que hacerle scrapping a esta
         $pageHtml = file_get_html($goodLink);

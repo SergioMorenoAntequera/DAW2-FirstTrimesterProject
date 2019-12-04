@@ -21,7 +21,7 @@
     <h4><b>Creación de película</b></h4>
     <form style="display: inline" method="POST" action="{{route('movie.store')}}" enctype="multipart/form-data">
         @csrf
-        <!-- LEFT -->
+        <!-- LEFT PANEL -->
         <div style="float:left; width: 28%; height: ‭432‬px;"> 
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -74,9 +74,9 @@
             </div>
             <br>
         </div>
-        <!-- END LEFT -->
+        <!-- END LEFT PANEL -->
         
-        <!-- RIGHT -->
+        <!-- LEFT PANEL -->
         <div style="float: right; width: 37%; height: 530px;" > 
             <div class="form-group">
                 <label>Géneros</label>
@@ -110,7 +110,7 @@
                 <button type="submit"> Crear película </button>
             </div>
         </div> 
-        <!-- END RIGHT -->
+        <!-- END RIGHT PANEL -->
     </form>
 </div>
 

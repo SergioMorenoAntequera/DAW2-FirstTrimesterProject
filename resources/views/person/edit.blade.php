@@ -12,12 +12,14 @@
 
 @section('content')
 
+        <!-- Imagen -->
         <div id="image-upload" style="float:left; margin-right: 15px;">
             <img style="margin-left: 0px; cursor: pointer" src="/img/people/{{$person->photo}}" width="355px" height="460px">
             <input id="file-input" type="file"/>
             <br>
         </div>
 
+        <!-- Campos para editar de la persona -->
         <div class="text-left"> 
             <h4><b>Modificado película</b></h4>
             <form style="display: inline" method="POST" action="{{route('person.update', $person->id)}}" enctype="multipart/form-data">

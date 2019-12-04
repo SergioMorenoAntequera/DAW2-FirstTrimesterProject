@@ -13,7 +13,7 @@
 @section('content')
 
         <div style="float:left; margin-right: 15px; text-align: left">
-            
+            <!-- Foto a la izquierda de la página -->
             @if (strpos($movie->cover, "filmaffinity"))
                 <img style="margin-left: 0px" src="{{$movie->cover}}" width="355px" height="460px">
             @else
@@ -22,6 +22,7 @@
             <br>
         </div>
 
+        <!-- Formualario a la derecaha de la página -->
         <div class="text-left"> 
             <h4><b>Ficha de la película</b></h4>
             <form style="display: inline" method="POST" action="{{route('movie.update', $movie->id)}}" enctype="multipart/form-data">
@@ -31,6 +32,7 @@
 
                 <!-- LEFT -->
                 <div style="float:left; width: 28%; height: ‭432‬px;"> 
+                    <!-- Donde se capturan los errores al comprobar en el servidor -->
                     @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -40,6 +42,8 @@
                         </ul>
                     </div>
                     @endif
+
+                    <!-- Panel de la izquierda en la derecha (jeje) -->
                     <div class="form-group">
                         <label>Título</label>
                         <input style="width: 100%" type="text" class="form-control" name="title" placeholder="Título" value="{{$movie->title}}" required>
@@ -71,16 +75,16 @@
                     <div class="form-group">
                         <label>Portada</label>
                         <input type="file" name="cover" accept="image/png, image/jpeg">
-                        <!-- <input style="width: 100%" type="text" class="form-control" name="cover" placeholder="Portada" value="{{$movie->cover}}" required> -->
                     </div>
                     <div class="form-group">
                         <label>Nombre del archivo</label>
                         <input style="width: 100%" type="text" class="form-control" name="filename" placeholder="Nombre" value="{{$movie->filename}}" required>
                     </div>
                     <br>
-                </div> <!-- END LEFT -->
+                </div> 
+                <!-- END LEFT -->
                 
-                <!-- RIGHT -->
+                <!-- RIGHT PANEL -->
                 <div style="float: right; width: 37%; height: 530px;" > 
                     <div class="form-group">
                         <label>Géneros</label>
@@ -131,9 +135,8 @@
                         <br>
                         <button type="submit">MODIFICAR PELÍCULA</button>
                     </div>
-                    
-
-                </div> <!-- END RIGHT -->
+                </div> 
+                <!-- END RIGHT -->
                 
                 <input type="hidden" name="filepath" placeholder="FilePath" value="{{$movie->filepath}}" required><br>
             </form>

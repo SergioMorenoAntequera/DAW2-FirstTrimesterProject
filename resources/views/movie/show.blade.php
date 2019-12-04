@@ -11,16 +11,18 @@
 @endsection
 
 @section('content')
+    <!-- Imagen -->
     <div style="border-bottom: 0px; float:left; margin-right: 15px">
         @if (strpos($movie->cover, "filmaffinity"))
             <img src="{{$movie->cover}}" height="460px" width="300px;">
         @else
             <img src="/img/covers/{{$movie->cover}}" height="460px" width="300px;">
         @endif
-        
     </div>
 
-    <div class="text-left"> 
+    <!-- Imagen -->
+    <div class="text-left">
+
         <h4><b>Ficha de la película</b></h4>
         <p><b>Title: </b> {{$movie->title}}</p>
         <p><b>Año: </b>
@@ -44,7 +46,7 @@
                     <figcaption class="figure-caption">{{$director->name}}</figcaption>
                 </a>
             </figure>
-            @empty
+        @empty
             <p> No se ha introducido ningún director </p>
         @endforelse
         </div>
@@ -57,7 +59,7 @@
                     <figcaption class="figure-caption">{{$actor->name}}</figcaption>
                 </a>
             </figure>
-            @empty
+        @empty
             <p> No se ha introducido ningún director </p>
         @endforelse
         
@@ -66,11 +68,11 @@
         <!-- PARTE DE REPRODUCCIÓN DE LA PELÍCULA -->
         <br><br>
         <div style="margin-top: 100px;" class="card text-center">
-          <div class="card-header text-success border border-success">
-            <h3>Película</h3>
-          </div>
+            <div class="card-header text-success border border-success">
+                <h3>Película</h3>
+            </div>
 
-          <div class="card-body">
+            <div class="card-body">
                 <div class="row justify-content-md-center">
                     <div class="col-8">
                         <video controls>
@@ -79,10 +81,9 @@
                         Your browser does not support the video tag.
                         </video>
                     </div>
-                </div>
-                
-          </div>
+                </div> 
+            </div>
         </div>
+
     </div>
-    
 @endsection

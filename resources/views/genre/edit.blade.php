@@ -17,9 +17,9 @@
             <form method="POST" action="{{route('genre.update', $genre->id)}}">
                 @csrf
                 @method("PATCH")
-
                 <input type="hidden" name="id" value="{{$genre->id}}">
                 
+                <!-- Nombre -->
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">
                         Nombre / Descripción
@@ -29,6 +29,7 @@
                     </div>
                 </div>
 
+                <!-- Detalles -->
                 <div class="form-group row">
                     <label for="details" class="col-md-4 col-form-label text-md-right">
                         Detalles
@@ -38,6 +39,7 @@
                     </div>
                 </div>
 
+                <!-- Boton para modificar -->
                 <div class="form-group row mb-0">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-success">
